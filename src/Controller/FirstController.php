@@ -10,6 +10,11 @@ use App\Controller\Request;
 
 class FirstController extends AbstractController
 {
+    #[Route('/template', name: 'template')]
+    public function template(){
+        return $this->render('template.html.twig');
+    }
+
     #[Route('/order/{maVar}', name: 'test.order.route')]
     public function testOrderRoute($maVar): Response
     {
@@ -28,11 +33,15 @@ class FirstController extends AbstractController
         ]);
     }
 
-    #[Route('/sayhello/{name}/{firstname}', name: 'say.hello')]
-    public function sayhello( $name, $firstname): Response
+   // #[Route('/sayhello/{name}/{firstname}', name: 'say.hello')]
+    public function sayhello($name, $firstname): Response
     {
       
-        return $this->render('first/hello.html.twig', ['nom' => $name, 'prenom' => $firstname]);
+        return $this->render('first/hello.html.twig',[
+          'nom' => $name,
+          'prenom' => $firstname
+       
+       ]);
     }
 
     //pour dire que ce sont des entiers <\d+>
